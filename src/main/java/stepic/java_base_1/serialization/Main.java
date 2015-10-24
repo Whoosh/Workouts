@@ -25,10 +25,9 @@ public class Main {
 
     public static Animal[] deserializeAnimalArray(byte[] data) {
         Animal[] animals;
-        try {
-            ObjectInputStream objectInputStream = new ObjectInputStream(new ByteArrayInputStream(data));
+        try (ObjectInputStream objectInputStream = new ObjectInputStream(new ByteArrayInputStream(data))) {
             animals = new Animal[objectInputStream.readInt()];
-            for (int i = 0; i < animals.length; i++) animals[i] = (Animal) objectInputStream.readObject();
+            for (int i = 0; i < animals.length; animals[i++] = (Animal) objectInputStream.readObject());
         } catch (Exception e) {
             throw new IllegalArgumentException();
         }

@@ -1,7 +1,11 @@
 package stepic.java_base_1.streams;
 
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.StringReader;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.stream.Collectors;
 
 
@@ -14,11 +18,15 @@ public class Main {
     private static void justDoIt2(BufferedReader bufferedReader) {
         bufferedReader.lines()
                 .map(String::toLowerCase)
-                .map(Main::removeNoise)
+                .map(z -> z
+                        .chars()
+                        .map(x -> Character.isLetterOrDigit(x) ? x : (int) ' ').mapToObj(x -> (char) x)
+                        .map(x -> x + "")
+                        .reduce((x, y) -> x + y)
+                        .get())
                 .flatMap(s -> Arrays.asList(s.split(" ")).stream())
-                .collect(Collectors.toCollection(ArrayList::new)).stream().collect(Collectors.groupingBy(String::hashCode))
-                .values()
-                .stream()
+                .collect(Collectors.groupingBy(String::hashCode))
+                .values().stream()
                 .sorted((list_1, list_2) -> list_2.size() - list_1.size())
                 .sorted((list_1, list_2) -> list_1.size() == list_2.size() ? list_1.get(0).compareTo(list_2.get(0)) : 0)
                 .limit(11)
