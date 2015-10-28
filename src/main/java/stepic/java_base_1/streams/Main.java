@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.stream.Collectors;
 
 
@@ -20,18 +21,42 @@ public class Main {
                 .map(String::toLowerCase)
                 .map(z -> z
                         .chars()
-                        .map(x -> Character.isLetterOrDigit(x) ? x : (int) ' ').mapToObj(x -> (char) x)
-                        .map(x -> x + "")
+                        .map(x -> Character.isLetterOrDigit(x) ? x : ' ')
+                        .mapToObj(x -> String.valueOf((char) x))
                         .reduce((x, y) -> x + y)
                         .get())
                 .flatMap(s -> Arrays.asList(s.split(" ")).stream())
                 .collect(Collectors.groupingBy(String::hashCode))
-                .values().stream()
+                .values()
+                .stream()
+                .map(x -> x.get(0).equals("") ? Collections.<String>emptyList() : x)
                 .sorted((list_1, list_2) -> list_2.size() - list_1.size())
                 .sorted((list_1, list_2) -> list_1.size() == list_2.size() ? list_1.get(0).compareTo(list_2.get(0)) : 0)
-                .limit(11)
+                .limit(10)
                 .forEach(x -> System.out.println(x.get(0)));
     }
+
+
+    public static void justDoIt(InputStream io) throws Exception {
+        new BufferedReader(new InputStreamReader(io, "UTF-8")).lines()
+                .map(String::toLowerCase)
+                .map(z -> z
+                        .chars()
+                        .map(x -> Character.isLetterOrDigit(x) ? x : (int) ' ').mapToObj(x -> (char) x)
+                        .map(String::valueOf)
+                        .reduce((x, y) -> x + y)
+                        .get())
+                .flatMap(s -> Arrays.asList(s.split(" ")).stream())
+                .collect(Collectors.groupingBy(String::hashCode))
+                .values()
+                .stream()
+                .sorted((list_1, list_2) -> list_2.size() - list_1.size())
+                .sorted((list_1, list_2) -> list_1.size() == list_2.size() ? list_1.get(0).compareTo(list_2.get(0)) : 0)
+                .skip(1)
+                .limit(10)
+                .forEach(x -> System.out.println(x.get(0)));
+    }
+
 
     private static String removeNoise(String value) {
         return value
@@ -42,7 +67,7 @@ public class Main {
                 .get();
     }
 
-    public static void justDoIt(InputStream io) throws Exception {
+    public static void justDoIt2(InputStream io) throws Exception {
         new BufferedReader(new InputStreamReader(io, "UTF-8")).lines()
                 .map(String::toLowerCase)
                 .map(Main::removeNoise)
