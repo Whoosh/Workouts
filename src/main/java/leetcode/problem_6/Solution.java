@@ -8,7 +8,7 @@ public class Solution {
     public static void main(String[] args) {
         System.out.println(convert("PAYPALISHIRING", 5));
     }
-    
+
     public static String convert(String src, int numRows) {
         int len = src.length();
         if (numRows < 2 || len <= numRows) return src;
