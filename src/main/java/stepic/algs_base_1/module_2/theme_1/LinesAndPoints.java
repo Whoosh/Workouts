@@ -1,4 +1,4 @@
-package stepic.algs_base_1.module_2;
+package stepic.algs_base_1.module_2.theme_1;
 
 import java.util.ArrayList;
 import java.util.Arrays;
