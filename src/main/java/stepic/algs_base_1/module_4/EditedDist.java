@@ -1,10 +1,10 @@
 package stepic.algs_base_1.module_4;
 
-import java.util.Scanner;
-
 /**
  * Created by whoosh on 12/10/15.
  */
+import java.util.Scanner;
+
 public class EditedDist {
 
     public static void main(String[] args) {
