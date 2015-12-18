@@ -1,4 +1,4 @@
-package stepic.algs_mail_base_1.modulee_2;
+package stepic.algs_mail_base_1.module_2;
 
 import java.util.ArrayDeque;
 
