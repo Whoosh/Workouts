@@ -1,9 +1,6 @@
 package funny_benchmarks;
 
-import org.openjdk.jmh.annotations.Benchmark;
-import org.openjdk.jmh.annotations.BenchmarkMode;
-import org.openjdk.jmh.annotations.Mode;
-import org.openjdk.jmh.annotations.OutputTimeUnit;
+import org.openjdk.jmh.annotations.*;
 import org.openjdk.jmh.runner.Runner;
 import org.openjdk.jmh.runner.RunnerException;
 import org.openjdk.jmh.runner.options.Options;
@@ -16,18 +13,22 @@ import java.io.InputStreamReader;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Created by whoosh on 12/17/15.
+ * Created by whoosh on 12/18/15.
  */
-@BenchmarkMode(Mode.AverageTime)
-@OutputTimeUnit(TimeUnit.MILLISECONDS)
-public class InputStreamReadIntegers {
 
-    private static int DATA_LEN = 5000000;
+@State(Scope.Thread)
+@OutputTimeUnit(TimeUnit.MILLISECONDS)
+@BenchmarkMode(Mode.AverageTime)
+public class InputStreamReadIntTest {
+
+    private static int DATA_LEN = 8000000;
+    private static int FROM = 1000000000;
+    private static BufferedReader reader;
 
     public static void main(String[] args) {
         Options opt = new OptionsBuilder()
-                .include(InputStreamReadIntegers.class.getSimpleName())
-                .warmupIterations(2)
+                .include(InputStreamReadIntTest.class.getSimpleName())
+                .warmupIterations(3)
                 .measurementIterations(10)
                 .forks(1)
                 .build();
@@ -38,36 +39,53 @@ public class InputStreamReadIntegers {
         }
     }
 
-    private BufferedReader prepareData() {
+    @Setup
+    public void prepareData() {
         StringBuilder builder = new StringBuilder();
         builder.append(" ");
         for (int i = 0; i < DATA_LEN; i++) {
-            builder.append((i & 1) == 0 ? i * -1 : i);
+            builder.append(FROM + (i & 1) == 0 ? -i : i);
             builder.append(" ");
         }
         ByteArrayInputStream byteBuffer = new ByteArrayInputStream(builder.toString().getBytes());
-        return new BufferedReader(new InputStreamReader(byteBuffer));
+        reader = new BufferedReader(new InputStreamReader(byteBuffer));
     }
 
 
     @Benchmark
-    public void first() throws IOException {
-        BufferedReader reader = prepareData();
+    public int first() throws IOException {
         int result = 0;
-        for (int i = 0; i < DATA_LEN; i++) {
-            result += nextInt(reader);
-        }
-        System.out.println(result);
+        for (int i = 0; i < DATA_LEN; i++) result += nextInt(reader);
+        return result;
     }
 
     @Benchmark
-    public void second() throws IOException {
-        BufferedReader reader = prepareData();
+    public int second() throws IOException {
         int result = 0;
-        for (int i = 0; i < DATA_LEN; i++) {
-            result += nextInt2(reader);
+        for (int i = 0; i < DATA_LEN; i++) result += nextInt2(reader);
+        return result;
+    }
+
+    @Benchmark
+    public int third() throws IOException {
+        int result = 0;
+        for (int i = 0; i < DATA_LEN; i++) result += nextLong(reader);
+        return result;
+    }
+
+
+    private static int nextLong(BufferedReader br) throws IOException {
+        try {
+            int d, i = 0;
+            char[] res = new char[20];
+            while ((d = br.read()) == 32) ;
+            do {
+                res[i++] = (char) d;
+            } while (Character.isDigit(d = br.read()));
+            return Integer.parseInt(String.valueOf(res, 0, i), 10);
+        } catch (Exception ex) {
+            return 0;
         }
-        System.out.println(result);
     }
 
     private static int nextInt2(BufferedReader br) throws IOException {
@@ -96,6 +114,6 @@ public class InputStreamReadIntegers {
             if ((d = br.read()) < 48 || d > 57) break;
             val *= 10;
         } while (true);
-        return l ? val * -1 : val;
+        return l ? -val : val;
     }
 }
