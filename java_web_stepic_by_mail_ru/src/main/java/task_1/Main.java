@@ -1,7 +1,9 @@
+package task_1;
+
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
-import servlets.SimplyMirrorServlet;
+import task_1.servlets.SimplyMirrorServlet;
 
 /**
  * Created by whoosh on 12/18/15.
