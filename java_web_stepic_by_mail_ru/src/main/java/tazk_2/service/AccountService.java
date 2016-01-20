@@ -10,6 +10,7 @@ import java.util.Map;
  * Created by whoosh on 12/21/15.
  */
 public class AccountService {
+
     private final Map<String, UserProfile> loginToProfile;
     private final Map<String, UserProfile> sessionIdToProfile;
 
@@ -18,8 +19,8 @@ public class AccountService {
         sessionIdToProfile = new HashMap<>();
     }
 
-    public void addNewUser(UserProfile userProfile) {
-        loginToProfile.put(userProfile.getLogin(), userProfile);
+    public void addNewUser(UserProfile u) {
+        loginToProfile.put(u.getLogin(), u);
     }
 
     public UserProfile getUserByLogin(String login) {

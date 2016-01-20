@@ -79,7 +79,7 @@ public class ServerRegistrationTest {
         OutputStream os = con.getOutputStream();
         os.write(LOGIN_PARAM.getBytes());
         os.write(LOGIN.getBytes());
-        os.write(',');
+        os.write('&');
         os.write(PASSWORD_PARAM.getBytes());
         os.write(PASSWORD.getBytes());
         os.flush();
@@ -100,7 +100,7 @@ public class ServerRegistrationTest {
         OutputStream os = con.getOutputStream();
         os.write(LOGIN_PARAM.getBytes());
         os.write(LOGIN.getBytes());
-        os.write(',');
+        os.write('&');
         os.write(PASSWORD_PARAM.getBytes());
         os.write(PASSWORD.getBytes());
         os.flush();
@@ -121,7 +121,7 @@ public class ServerRegistrationTest {
         OutputStream os = con.getOutputStream();
         os.write(LOGIN_PARAM.getBytes());
         os.write(LOGIN.getBytes());
-        os.write(',');
+        os.write('&');
         os.write(PASSWORD_PARAM.getBytes());
         os.write((PASSWORD+"123").getBytes());
         os.flush();
