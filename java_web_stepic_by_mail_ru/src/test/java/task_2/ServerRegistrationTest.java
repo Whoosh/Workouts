@@ -28,9 +28,9 @@ public class ServerRegistrationTest {
     private static final String REGISTRATION_URL = "http://localhost:8080/signup";
     private static final String LOG_IN_URL = "http://localhost:8080/signin";
     private static final String LOGIN_PARAM = "login=";
-    private static final String PASSWORD_PARAM = "password=";
+    private static final String PASSWORD_PARAM = "pass=";
     private static final String LOGIN = "man";
-    private static final String PASSWORD = "mans password";
+    private static final String PASSWORD = "mans";
 
     private Server server;
 
@@ -67,6 +67,10 @@ public class ServerRegistrationTest {
 
     @Test
     public void tryToRegisterTest() throws Exception {
+        regNewUser();
+    }
+
+    private void regNewUser() throws Exception {
         URL obj = new URL(REGISTRATION_URL);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
         con.setRequestMethod("POST");
@@ -79,9 +83,49 @@ public class ServerRegistrationTest {
         os.write(PASSWORD_PARAM.getBytes());
         os.write(PASSWORD.getBytes());
         os.flush();
-        os.close();
         Assert.assertEquals(HttpServletResponse.SC_OK, con.getResponseCode());
         Scanner scanner = new Scanner(con.getInputStream());
-        System.out.println(scanner.nextLine());
+        Assert.assertEquals(scanner.nextLine(), "Registered");
+        os.close();
+    }
+
+    @Test
+    public void tryToAuthorizationTest() throws Exception {
+        regNewUser();
+        URL obj = new URL(LOG_IN_URL);
+        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+        con.setRequestMethod("POST");
+        con.setRequestProperty("User-Agent", USER_AGENT);
+        con.setDoOutput(true);
+        OutputStream os = con.getOutputStream();
+        os.write(LOGIN_PARAM.getBytes());
+        os.write(LOGIN.getBytes());
+        os.write(',');
+        os.write(PASSWORD_PARAM.getBytes());
+        os.write(PASSWORD.getBytes());
+        os.flush();
+        Assert.assertEquals(HttpServletResponse.SC_OK, con.getResponseCode());
+        Scanner scanner = new Scanner(con.getInputStream());
+        Assert.assertEquals("Authorized",scanner.nextLine());
+        os.close();
+    }
+
+    @Test
+    public void tryToAuthorizationWrongPassTest() throws Exception {
+        regNewUser();
+        URL obj = new URL(LOG_IN_URL);
+        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+        con.setRequestMethod("POST");
+        con.setRequestProperty("User-Agent", USER_AGENT);
+        con.setDoOutput(true);
+        OutputStream os = con.getOutputStream();
+        os.write(LOGIN_PARAM.getBytes());
+        os.write(LOGIN.getBytes());
+        os.write(',');
+        os.write(PASSWORD_PARAM.getBytes());
+        os.write((PASSWORD+"123").getBytes());
+        os.flush();
+        Assert.assertEquals(HttpServletResponse.SC_UNAUTHORIZED, con.getResponseCode());
+        os.close();
     }
 }

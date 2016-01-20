@@ -42,7 +42,7 @@
                     <appendAssemblyId>false</appendAssemblyId>
                     <archive>
                         <manifest>
-                            <mainClass>main.task_1.Main</mainClass>
+                            <mainClass>tazk_2.Main</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
@@ -61,6 +61,12 @@
             <artifactId>jetty-webapp</artifactId>
             <version>9.3.0.M1</version>
         </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-annotations</artifactId>
+            <version>9.3.0.M1</version>
+        </dependency>
+
         <dependency>
             <groupId>org.freemarker</groupId>
             <artifactId>freemarker</artifactId>

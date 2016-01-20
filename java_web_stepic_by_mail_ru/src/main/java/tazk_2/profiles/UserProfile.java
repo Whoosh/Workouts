@@ -4,20 +4,18 @@ package tazk_2.profiles;
  * Created by whoosh on 12/21/15.
  */
 public class UserProfile {
+
     private final String login;
     private final String pass;
-    private final String email;
 
-    public UserProfile(String login, String pass, String email) {
+    public UserProfile(String login, String pass) {
         this.login = login;
         this.pass = pass;
-        this.email = email;
     }
 
     public UserProfile(String login) {
         this.login = login;
         this.pass = login;
-        this.email = login;
     }
 
     public String getLogin() {
@@ -26,9 +24,5 @@ public class UserProfile {
 
     public String getPass() {
         return pass;
-    }
-
-    public String getEmail() {
-        return email;
     }
 }
