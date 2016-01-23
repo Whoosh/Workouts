@@ -42,7 +42,7 @@
                     <appendAssemblyId>false</appendAssemblyId>
                     <archive>
                         <manifest>
-                            <mainClass>tazk_2.Main</mainClass>
+                            <mainClass>tazk_4.Main</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
@@ -76,6 +76,11 @@
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
             <version>2.5</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty.websocket</groupId>
+            <artifactId>websocket-server</artifactId>
+            <version>9.3.0.M1</version>
         </dependency>
     </dependencies>
 </project>
