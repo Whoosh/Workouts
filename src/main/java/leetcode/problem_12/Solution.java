@@ -1,12 +1,18 @@
 package leetcode.problem_12;
 
+import java.util.HashMap;
+
 /**
  * Created by whoosh on 2/7/16.
  */
 public class Solution {
+    private static HashMap<String, Integer> lul = new HashMap<>(4000);
 
     public static void main(String[] args) {
-        System.out.println(intToRoman(14));
+        for (int i = 0; i < 4000; i++) {
+            lul.put(intToRoman(i), i);
+        }
+        System.out.println(lul.get("XXXV"));
     }
 
     private static int index = 0;

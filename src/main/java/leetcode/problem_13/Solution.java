@@ -1,4 +1,4 @@
-package leetcode.promlm_13;
+package leetcode.problem_13;
 
 import java.util.HashMap;
 

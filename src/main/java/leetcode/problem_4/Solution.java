@@ -12,11 +12,7 @@ public class Solution {
         int[] second = new int[]{4};
 
         double medianSortedArrays = new Solution().findMedianSortedArrays2(first, second);
-    //    double test = new Solution().slowMedianFinder(first, second);
-    //    double recS = new Solution().findMedianSortedArrays(second, first);
         System.out.println("fast Method - " + medianSortedArrays);
-    //    System.out.println("slow Method - " + test);
-     //   System.out.println("recS Method - " + recS);
     }
 
     public double slowMedianFinder(int[] a, int[] b) {
