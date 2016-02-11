@@ -14,11 +14,9 @@ public class Solution {
     public static String longestCommonPrefix(String[] strs) {
         if (strs.length == 0) return "";
         if (strs.length == 1) return strs[0];
-        if (strs[0].isEmpty()) return "";
         int prefixLength = maxLen(strs[0], strs[1], strs[0].length() > strs[1].length() ? strs[1].length() : strs[0].length());
         for (int i = 1; i < strs.length - 1; i++) {
             if (strs[i + 1].length() == 0 || strs[i].length() == 0) return "";
-            if (strs[i].charAt(0) != strs[i + 1].charAt(0)) return "";
             prefixLength = maxLen(strs[i], strs[i + 1], prefixLength);
         }
         return strs[0].substring(0, prefixLength);
