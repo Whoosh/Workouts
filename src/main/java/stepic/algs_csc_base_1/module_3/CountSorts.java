@@ -15,7 +15,7 @@ import java.io.IOException;
 public class CountSorts {
 
     public static void main(String[] args) throws IOException {
-        int[] map = new int[10];
+        int[] map = new int[120];
         int[] values = new int[nextInt()];
         for (int i = 0; i < values.length; i++) values[i] = nextInt();
         for (int value : values) map[value]++;

@@ -1,6 +1,6 @@
 package problem_15;
 
-import leetcode.problem_15.Solution;
+import leetcode.problems_0_100.problem_15.Solution;
 import org.junit.Test;
 
 import java.util.List;

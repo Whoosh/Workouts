@@ -1,6 +1,6 @@
 package problem_11;
 
-import leetcode.problem_11.Solution;
+import leetcode.problems_0_100.problem_11.Solution;
 import org.junit.Assert;
 import org.junit.Test;
 
