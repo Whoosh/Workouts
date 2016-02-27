@@ -1,29 +1,29 @@
-package example;
+package task_1.example;
 
 
-import accountServer.AccountServer;
-import accountServer.AccountServerController;
-import accountServer.AccountServerControllerMBean;
-import accountServer.AccountServerI;
 import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.handler.HandlerList;
 import org.eclipse.jetty.server.handler.ResourceHandler;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
-import servlets.AdminPageServlet;
-import servlets.HomePageServlet;
+import task_1.accountServer.AccountServer;
+import task_1.accountServer.AccountServerController;
+import task_1.accountServer.AccountServerControllerMBean;
+import task_1.accountServer.AccountServerI;
+import task_1.servlets.AdminPageServlet;
+import task_1.servlets.HomePageServlet;
 
 import javax.management.MBeanServer;
 import javax.management.ObjectName;
 import java.lang.management.ManagementFactory;
 
-public class Main {
+public class Main2 {
 
-    //static final Logger logger = LogManager.getLogger(Main.class.getName());
+    //static final Logger logger = LogManager.getLogger(Main2.class.getName());
 
     public static void main(String[] args) throws Exception {
-//        System.out.println(Main.class.getProtectionDomain().getCodeSource().getLocation().getPath());
+//        System.out.println(Main2.class.getProtectionDomain().getCodeSource().getLocation().getPath());
 //        if (args.length != 1) {
 //            logger.error("Use port as the first argument");
 //            System.exit(1);

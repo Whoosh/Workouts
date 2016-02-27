@@ -1,6 +1,6 @@
-package servlets;
+package task_1.servlets;
 
-import accountServer.AccountServerI;
+import task_1.accountServer.AccountServerI;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

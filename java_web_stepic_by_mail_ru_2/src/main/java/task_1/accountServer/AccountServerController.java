@@ -1,4 +1,4 @@
-package accountServer;
+package task_1.accountServer;
 
 public class AccountServerController implements AccountServerControllerMBean {
     private final AccountServerI accountServer;

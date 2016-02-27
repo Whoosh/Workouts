@@ -1,4 +1,4 @@
-package accountServer;
+package task_1.accountServer;
 
 
 public interface AccountServerI {
