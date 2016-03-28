@@ -1,9 +1,9 @@
 package task_1;
 
-import accountServer.AccountServer;
-import accountServer.AccountServerI;
 import org.junit.Test;
-import servlets.HomePageServlet;
+import task_1.accountServer.AccountServer;
+import task_1.accountServer.AccountServerI;
+import task_1.servlets.HomePageServlet;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

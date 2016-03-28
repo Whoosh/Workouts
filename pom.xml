@@ -10,6 +10,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>java_web_stepic_by_mail_ru</module>
+        <module>java_web_stepic_by_mail_ru_2</module>
     </modules>
 
     <properties>
