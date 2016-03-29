@@ -1,6 +1,7 @@
 package leetcode.problems_100_200.problem_133;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 
@@ -37,34 +38,38 @@ public class CloneGraph {
         }};
         fiveNode.neighbors = new ArrayList<UndirectedGraphNode>() {{
         }};
-        cloneGraph(oneNode);
+        cloneGraph(zeroNode);
     }
 
-    private static HashSet<Integer> watchedMap;
-    private static UndirectedGraphNode head;
+    private static HashMap<Integer, UndirectedGraphNode> map;
+    private static HashMap<Integer, UndirectedGraphNode> f;
 
     public static UndirectedGraphNode cloneGraph(UndirectedGraphNode node) {
         if (node == null) return node;
-        head = new UndirectedGraphNode(node.label);
-        watchedMap = new HashSet<>();
+        UndirectedGraphNode head = new UndirectedGraphNode(node.label);
+        map = new HashMap<>();
+        f = new HashMap<>();
         makeNewGraph(node, head);
-        print(node);
+        print(head);
         return head;
     }
 
     private static void makeNewGraph(UndirectedGraphNode oldNode, UndirectedGraphNode newNode) {
-        if (watchedMap.contains(oldNode.label)) return;
-        watchedMap.add(oldNode.label);
+        if (map.containsKey(oldNode.label)) return;
+        map.put(newNode.label, newNode);
         newNode.neighbors = new ArrayList<>();
         for (UndirectedGraphNode neighbor : oldNode.neighbors) {
-            if (watchedMap.contains(neighbor.label)) {
-                newNode.neighbors.add(newNode);
+            if (map.containsKey(neighbor.label)) {
+                newNode.neighbors.add(map.get(neighbor.label));
             } else {
-                UndirectedGraphNode n = new UndirectedGraphNode(neighbor.label);
-                newNode.neighbors.add(n);
+                if (!f.containsKey(neighbor.label)) {
+                    UndirectedGraphNode n = new UndirectedGraphNode(neighbor.label);
+                    newNode.neighbors.add(n);
+                    f.put(n.label, n);
+                } else newNode.neighbors.add(f.get(neighbor.label));
             }
         }
-        for (int i = 0; i < oldNode.neighbors.size(); i++) {
+        for (int i = 0; i < newNode.neighbors.size(); i++) {
             makeNewGraph(oldNode.neighbors.get(i), newNode.neighbors.get(i));
         }
     }
@@ -92,6 +97,5 @@ public class CloneGraph {
             label = x;
             neighbors = new ArrayList<>();
         }
-
     }
 }
