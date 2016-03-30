@@ -25,7 +25,7 @@ public class Solution {
     }
 
     public static void moveZeroes(int[] nums) {
-        int d = 0;
+        int d = 1;
         for (int i = 0, j; i < nums.length; i++) {
             if (nums[i] == 0) {
                 j = i + d;
@@ -33,15 +33,10 @@ public class Solution {
                     ++d;
                     ++j;
                 }
-                if (j > nums.length - 1) break;
-                swap(nums, i, j);
+                if (j == nums.length) break;
+                nums[i] = nums[j];
+                nums[j] = 0;
             }
         }
-    }
-
-    public static void swap(final int[] nums, final int i, final int j) {
-        final int b = nums[i];
-        nums[i] = nums[j];
-        nums[j] = b;
     }
 }
