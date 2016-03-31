@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Workouts.iml" filepath="$PROJECT_DIR$/Workouts.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java_web_stepic_by_mail_ru/java_web_stepic_by_mail_ru.iml" filepath="$PROJECT_DIR$/java_web_stepic_by_mail_ru/java_web_stepic_by_mail_ru.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java_web_stepic_by_mail_ru_2/java_web_stepic_by_mail_ru_2.iml" filepath="$PROJECT_DIR$/java_web_stepic_by_mail_ru_2/java_web_stepic_by_mail_ru_2.iml" />
     </modules>
   </component>
 </project>
