@@ -1,4 +1,4 @@
-package problem_334;
+package leetcode.problem_334;
 
 import leetcode.problems_300_400.problem_334.Solution;
 import org.junit.Assert;

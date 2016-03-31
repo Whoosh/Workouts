@@ -1,4 +1,4 @@
-package problem_15;
+package leetcode.problem_15;
 
 import leetcode.problems_0_100.problem_15.Solution;
 import org.junit.Test;
