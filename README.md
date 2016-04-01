@@ -6,7 +6,7 @@ https://leetcode.com/
 
 https://stepic.org/
 
-https://projecteuler.net/
+![alt tag](https://projecteuler.net/profile/Whoosh.png)  -> https://projecteuler.net/ 
 
 https://coursera.org/
 
