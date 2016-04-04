@@ -48,7 +48,7 @@ public class TopologySort {
         Arrays.setAll(mapOfNodeState, x -> States.WHITE);
         graphGotCycle = false;
     }
-    
+
     //trash
     private static void fillTheByCycle(int[][] graph, ArrayList<Integer> result) {
         int countOfTraveledNodes = 0;
