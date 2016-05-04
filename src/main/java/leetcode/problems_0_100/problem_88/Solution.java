@@ -3,7 +3,8 @@ package leetcode.problems_0_100.problem_88;
 /**
  * Created by whoosh on 4/6/16.
  */
-public class Solution {
+public class Solution  {
+
     public static void main(String[] args) {
 
     }
@@ -21,4 +22,5 @@ public class Solution {
         }
         while (n >= 0) nums1[end--] = nums2[n--];
     }
+
 }

@@ -25,10 +25,6 @@ public class CountSorts {
                 for (int j = map[i]; j > 0; j--) values[index--] = i;
             }
         }
-        for (int value : values) {
-            System.out.print(value);
-            System.out.print(' ');
-        }
     }
 
     private static int nextInt() throws IOException {
