@@ -27,14 +27,4 @@ public class TopologySortTest {
         int[] expected = {};
         Assert.assertArrayEquals(expected, actual);
     }
-
-    @Test
-    public void SimplyArrayTestByCycle() {
-        int[][] graph = new int[][]{{3}, {}, {1}, {1, 2}};
-        int[] actual = TopologySort.sortArrayByCycle(graph);
-        int[] expected = {1, 2, 3, 0};
-        for (int i = actual.length - 1; i >= 0; i--) System.out.print(actual[i] + " ");
-        System.out.println(Arrays.toString(expected));
-        System.out.println(Arrays.toString(actual));
-    }
 }

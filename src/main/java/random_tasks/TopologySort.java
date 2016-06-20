@@ -23,13 +23,6 @@ public class TopologySort {
         return arrayResultBuffer.stream().mapToInt(x -> x).toArray();
     }
 
-    public static int[] sortArrayByCycle(int[][] graph) {
-        ArrayList<Integer> result = new ArrayList<>();
-        clearBuffer(graph);
-        fillTheByCycle(graph, result);
-        return result.stream().mapToInt(x -> x).toArray();
-    }
-
     private static void fillTheResultRecursively(int[][] graph, int nodeIndex) {
         if (mapOfNodeState[nodeIndex] == States.GREEN || graphGotCycle) return;
         if (mapOfNodeState[nodeIndex] == States.RED) {
@@ -47,32 +40,5 @@ public class TopologySort {
         arrayResultBuffer = new ArrayList<>();
         Arrays.setAll(mapOfNodeState, x -> States.WHITE);
         graphGotCycle = false;
-    }
-
-    //trash
-    private static void fillTheByCycle(int[][] graph, ArrayList<Integer> result) {
-        int countOfTraveledNodes = 0;
-        int nodeIndex = 0;
-        while (countOfTraveledNodes < graph.length) {
-            if (graphGotCycle) {
-                result.clear();
-                return;
-            }
-            if(mapOfNodeState[nodeIndex]!=States.GREEN)
-            result.add(nodeIndex);
-            mapOfNodeState[nodeIndex] = States.RED;
-            countOfTraveledNodes++;
-            for (int child : graph[nodeIndex]) {
-                if (mapOfNodeState[child] == States.RED) {
-                    graphGotCycle = true;
-                    break;
-                }
-                if (mapOfNodeState[child] == States.GREEN) continue;
-                nodeIndex = child;
-                result.add(child);
-                mapOfNodeState[child] = States.GREEN;
-            }
-            mapOfNodeState[nodeIndex] = States.GREEN;
-        }
     }
 }
