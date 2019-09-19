@@ -3,12 +3,12 @@ package task_3;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
-import task_3.profiles.UserProfile;
 import task_3.service.AccountService;
 import task_3.servlets.EchoServlet;
 import task_3.servlets.SessionsServlet;
 import task_3.servlets.SignInServlet;
 import task_3.servlets.SignUpServlet;
+import tazk_3.profiles.UserProfile;
 
 /**
  * Created by whoosh on 12/21/15.

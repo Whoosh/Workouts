@@ -1,8 +1,8 @@
 package task_3.servlets;
 
 import com.google.gson.Gson;
-import task_3.profiles.UserProfile;
 import task_3.service.AccountService;
+import tazk_3.profiles.UserProfile;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

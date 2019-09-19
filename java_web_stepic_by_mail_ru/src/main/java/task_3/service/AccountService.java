@@ -1,7 +1,6 @@
 package task_3.service;
 
-
-import task_3.profiles.UserProfile;
+import tazk_3.profiles.UserProfile;
 
 import java.io.*;
 import java.util.HashMap;
